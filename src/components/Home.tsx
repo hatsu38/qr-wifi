@@ -1,5 +1,5 @@
 import React, { VFC, useState } from "react";
-import QRCode from 'qrcode.react';
+import QRCode from "qrcode.react";
 
 type StringKeyObject = {
   [key: string]: string;
@@ -20,13 +20,13 @@ type Network = {
 }
 
 export const Home: VFC = () => {
-  const [network, setNetwork] = useState({
+  const [network, setNetwork] = useState<Network>({
     ssid: "",
     encryption: EncryptionType.WPA,
     password:"",
   });
 
-  const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password}`
+  const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password}`;
 
   return (
     <>
@@ -34,46 +34,46 @@ export const Home: VFC = () => {
       <div>
         <label htmlFor="networkName">ネットワーク名</label>
         <input type="text"
-                placeholder="SSID"
-                autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="none"
-                spellCheck="false"
-                value={network.ssid}
-                onChange={(e) => setNetwork({ ...network, ssid: e.target.value })}
-                />
-        </div>
-        <div>
+          placeholder="SSID"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="none"
+          spellCheck="false"
+          value={network.ssid}
+          onChange={(e) => setNetwork({ ...network, ssid: e.target.value })}
+        />
+      </div>
+      <div>
         <label htmlFor="networkName">パスワード</label>
         <input type="text"
-                placeholder="password"
-                autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="none"
-                spellCheck="false"
-                value={network.password}
-                onChange={(e) => setNetwork({ ...network, password: e.target.value })}
-                />
-        </div>
-        <div>
-          {Object.keys(EncryptionType).map((key) => (
-            <div key={key}>
-              <label htmlFor="encryptionType">{EncryptionType[key]}</label>
-              <input
-                type="radio"
-                name="encrypt-select"
-                id="encryptionType"
-                value={EncryptionType[key]}
-                onChange={(e) => {
-                  setNetwork({ ...network, encryption: EncryptionType[key] });
-                }}
-              />
-            </div>
-          ))}
-        </div>
-        <QRCode
-          value={qrCodeValue}
+          placeholder="password"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="none"
+          spellCheck="false"
+          value={network.password}
+          onChange={(e) => setNetwork({ ...network, password: e.target.value })}
         />
+      </div>
+      <div>
+        {Object.keys(EncryptionType).map((key) => (
+          <div key={key}>
+            <label htmlFor="encryptionType">{EncryptionType[key]}</label>
+            <input
+              type="radio"
+              name="encrypt-select"
+              id="encryptionType"
+              value={EncryptionType[key]}
+              onChange={(e) => {
+                setNetwork({ ...network, encryption: EncryptionType[key] });
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      <QRCode
+        value={qrCodeValue}
+      />
     </>
-  )
-}
+  );
+};
