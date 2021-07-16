@@ -14,9 +14,11 @@ import "~/styles/index.css";
 const Index: VFC = () => {
   return (
     <Router>
-      <Route path="/">
-        <Home />
-      </Route>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </Router>
   );
 };

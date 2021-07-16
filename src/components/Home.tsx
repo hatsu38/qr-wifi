@@ -64,7 +64,7 @@ export const Home: VFC = () => {
               name="encrypt-select"
               id="encryptionType"
               value={EncryptionType[key]}
-              onChange={(e) => {
+              onChange={() => {
                 setNetwork({ ...network, encryption: EncryptionType[key] });
               }}
             />
