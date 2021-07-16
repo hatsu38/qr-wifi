@@ -1,12 +1,25 @@
 import React, { VFC } from "react";
 import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import { Home } from "~/components/Home";
 
 import "~/styles/index.css";
 
 
-export const Index: VFC = () => {
+const Index: VFC = () => {
   return (
-    <h1 className="text-red-400">hoge</h1>
+    <Router>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
