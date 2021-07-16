@@ -1,13 +1,23 @@
 import React, { VFC } from "react";
 import ReactDOM from "react-dom";
-import QRCode from 'qrcode.react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import { Home } from "~/components/Home"
 
 import "~/styles/index.css";
 
 
-export const Index: VFC = () => {
+const Index: VFC = () => {
   return (
-    <QRCode value="http://facebook.github.io/react/" />
+    <Router>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Router>
   );
 };
 

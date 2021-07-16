@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "es6": true,
     "node": true,
@@ -22,6 +23,7 @@
     "no-var": "error", // var禁止
     "no-unused-vars": "error", // 使用していない変数を削除
     "no-debugger": "error", // デバッガーは残さない
+    "comma-dangle": ["error", "always"], // 複数行のときには末尾にカンマが必須
     "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
