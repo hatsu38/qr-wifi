@@ -1,9 +1,8 @@
-# A template for running React × Typescript × TailwindCSS with Webpack
+# QR-WIFI
 
-## Usage
+## Development
 
 1. npm install
-2. fix package.json name & repository url
 3. npm run dev
 
 ## Other
