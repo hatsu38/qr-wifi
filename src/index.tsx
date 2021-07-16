@@ -1,12 +1,13 @@
 import React, { VFC } from "react";
 import ReactDOM from "react-dom";
+import QRCode from 'qrcode.react';
 
 import "~/styles/index.css";
 
 
 export const Index: VFC = () => {
   return (
-    <h1 className="text-red-400">hoge</h1>
+    <QRCode value="http://facebook.github.io/react/" />
   );
 };
 
