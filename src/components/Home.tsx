@@ -70,6 +70,7 @@ export const Home: VFC = () => {
                   id={`encryptionType-${EncryptionType[key]}`}
                   className="mr-1"
                   value={EncryptionType[key]}
+                  checked={network.encryption === EncryptionType[key]}
                   onChange={() => {
                     setNetwork({ ...network, encryption: EncryptionType[key] });
                   }}
