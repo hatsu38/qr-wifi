@@ -6,8 +6,8 @@ type StringKeyObject = {
 }
 
 const EncryptionType: StringKeyObject = {
-  None: "None",
-  WPA: "WPA/WPA2",
+  None: "nopass",
+  WPA: "WPA",
   WEP: "WEP",
 } as const;
 
@@ -27,7 +27,7 @@ export const Home: VFC = () => {
   });
   const [hiddenPassword, setHiddenPassword] = useState<boolean>(false);
 
-  const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password}`;
+  const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password};;`;
   const fgColor = (!network.ssid || !network.password) ? "#ddd" : "#000";
 
   return (
@@ -87,13 +87,13 @@ export const Home: VFC = () => {
                     name="encrypt-select"
                     id={`encryptionType-${EncryptionType[key]}`}
                     className="mr-1"
-                    value={EncryptionType[key]}
+                    value={key}
                     checked={network.encryption === EncryptionType[key]}
                     onChange={() => {
                       setNetwork({ ...network, encryption: EncryptionType[key] });
                     }}
                   />
-                  <label htmlFor={`encryptionType-${EncryptionType[key]}`} className="networkFormLabel">{EncryptionType[key]}</label>
+                  <label htmlFor={`encryptionType-${EncryptionType[key]}`} className="networkFormLabel">{key}</label>
                 </div>
               ))}
             </div>
