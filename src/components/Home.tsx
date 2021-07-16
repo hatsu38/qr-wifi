@@ -33,8 +33,8 @@ export const Home: VFC = () => {
   return (
     <>
       <h1 className="font-bold text-gray-700 text-3xl text-center mt-6">WiFi QRCode</h1>
-      <div className="grid grid-cols-12 max-w-screen-md mx-auto mt-12">
-        <div className="space-y-4 col-span-8 pr-2">
+      <div className="grid grid-cols-12 max-w-screen-md mt-12 mx-3 md:mx-auto">
+        <div className="space-y-4 col-span-12 md:col-span-8 pr-2">
           <div className="grid grid-cols-6 items-center">
             <label htmlFor="networkName" className="networkFormLabel col-span-2">ネットワーク名</label>
             <input type="text"
@@ -99,7 +99,7 @@ export const Home: VFC = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-4">
+        <div className="mx-auto mt-6 col-span-12 md:col-span-4 md:mt-0">
           <QRCode
             value={qrCodeValue}
             fgColor={fgColor}
