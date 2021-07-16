@@ -25,6 +25,7 @@ export const Home: VFC = () => {
     encryption: EncryptionType.WPA,
     password:"",
   });
+  const [hiddenPassword, setHiddenPassword] = useState<boolean>(false);
 
   const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password}`;
 
@@ -36,6 +37,7 @@ export const Home: VFC = () => {
           <div className="grid grid-cols-6 items-center">
             <label htmlFor="networkName" className="networkFormLabel col-span-2">ネットワーク名</label>
             <input type="text"
+              id="networkName"
               placeholder="SSID"
               autoComplete="off"
               autoCorrect="off"
@@ -43,12 +45,13 @@ export const Home: VFC = () => {
               spellCheck="false"
               className="col-span-4 networkTextField"
               value={network.ssid}
-              onChange={(e) => setNetwork({ ...network, ssid: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNetwork({ ...network, ssid: e.target.value })}
             />
           </div>
           <div className="grid grid-cols-6 items-center">
-            <label htmlFor="networkName" className="networkFormLabel col-span-2">パスワード</label>
-            <input type="text"
+            <label htmlFor="password" className="networkFormLabel col-span-2">パスワード</label>
+            <input type={hiddenPassword ? "password" : "text"}
+              id="password"
               placeholder="password"
               autoComplete="off"
               autoCorrect="off"
@@ -56,8 +59,22 @@ export const Home: VFC = () => {
               spellCheck="false"
               className="col-span-4 networkTextField"
               value={network.password}
-              onChange={(e) => setNetwork({ ...network, password: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNetwork({ ...network, password: e.target.value })}
             />
+            <div className="col-start-3 col-span-4 items-center">
+            <label htmlFor="hiddenPassword" className="text-gray-500 text-sm font-bold">非表示にする</label>
+            <input type="checkbox"
+              id="hiddenPassword"
+              placeholder="password"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="none"
+              spellCheck="false"
+              className="networkTextField col-span-4"
+              defaultChecked={hiddenPassword}
+              onChange={() => setHiddenPassword(!hiddenPassword)}
+            />
+            </div>
           </div>
           <div className="grid grid-cols-6 items-center" >
           <label htmlFor="encryptionType" className="networkFormLabel col-span-2">種類</label>
