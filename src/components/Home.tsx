@@ -6,8 +6,8 @@ type StringKeyObject = {
 }
 
 const EncryptionType: StringKeyObject = {
-  None: "None",
-  WPA: "WPA/WPA2",
+  None: "nopass",
+  WPA: "WPA",
   WEP: "WEP",
 } as const;
 
@@ -27,13 +27,14 @@ export const Home: VFC = () => {
   });
   const [hiddenPassword, setHiddenPassword] = useState<boolean>(false);
 
-  const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password}`;
+  const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password};;`;
+  const fgColor = (!network.ssid || !network.password) ? "#ddd" : "#000";
 
   return (
     <>
-      <h1 className="font-bold text-gray-700 text-3xl text-center">WiFi QRCode</h1>
-      <div className="grid grid-cols-12 max-w-screen-md mx-auto mt-8">
-        <div className="space-y-4 col-span-8 pr-2">
+      <h1 className="font-bold text-gray-700 text-3xl text-center mt-6">WiFi QRCode</h1>
+      <div className="grid grid-cols-12 max-w-screen-md mt-12 mx-3 md:mx-auto">
+        <div className="space-y-6 col-span-12 md:col-span-8 pr-2">
           <div className="grid grid-cols-6 items-center">
             <label htmlFor="networkName" className="networkFormLabel col-span-2">ネットワーク名</label>
             <input type="text"
@@ -86,21 +87,23 @@ export const Home: VFC = () => {
                     name="encrypt-select"
                     id={`encryptionType-${EncryptionType[key]}`}
                     className="mr-1"
-                    value={EncryptionType[key]}
+                    value={key}
                     checked={network.encryption === EncryptionType[key]}
                     onChange={() => {
                       setNetwork({ ...network, encryption: EncryptionType[key] });
                     }}
                   />
-                  <label htmlFor={`encryptionType-${EncryptionType[key]}`} className="networkFormLabel">{EncryptionType[key]}</label>
+                  <label htmlFor={`encryptionType-${EncryptionType[key]}`} className="networkFormLabel">{key}</label>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <div className="col-span-4">
+        <div className="mx-auto mt-6 col-span-12 md:col-span-4 md:mt-0">
           <QRCode
             value={qrCodeValue}
+            fgColor={fgColor}
+            size={175}
           />
         </div>
       </div>

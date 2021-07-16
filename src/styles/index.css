@@ -4,9 +4,9 @@
 
 @layer components {
   .networkTextField {
-    @apply border border-gray-300 py-1 px-2 rounded placeholder-gray-400
+    @apply border border-gray-300 py-1 px-2 rounded placeholder-gray-400;
   }
   .networkFormLabel {
-    @apply text-gray-700 text-sm font-bold;
+    @apply text-gray-700 font-bold;
   }
 }
