@@ -28,11 +28,12 @@ export const Home: VFC = () => {
   const [hiddenPassword, setHiddenPassword] = useState<boolean>(false);
 
   const qrCodeValue=`WIFI:T:${network.encryption};S:${network.ssid};P:${network.password}`;
+  const fgColor = (!network.ssid || !network.password) ? "#ddd" : "#000";
 
   return (
     <>
-      <h1 className="font-bold text-gray-700 text-3xl text-center">WiFi QRCode</h1>
-      <div className="grid grid-cols-12 max-w-screen-md mx-auto mt-8">
+      <h1 className="font-bold text-gray-700 text-3xl text-center mt-6">WiFi QRCode</h1>
+      <div className="grid grid-cols-12 max-w-screen-md mx-auto mt-12">
         <div className="space-y-4 col-span-8 pr-2">
           <div className="grid grid-cols-6 items-center">
             <label htmlFor="networkName" className="networkFormLabel col-span-2">ネットワーク名</label>
@@ -101,6 +102,7 @@ export const Home: VFC = () => {
         <div className="col-span-4">
           <QRCode
             value={qrCodeValue}
+            fgColor={fgColor}
           />
         </div>
       </div>
