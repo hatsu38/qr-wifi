@@ -62,46 +62,46 @@ export const Home: VFC = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNetwork({ ...network, password: e.target.value })}
             />
             <div className="col-start-3 col-span-4 items-center">
-            <label htmlFor="hiddenPassword" className="text-gray-500 text-sm font-bold">非表示にする</label>
-            <input type="checkbox"
-              id="hiddenPassword"
-              placeholder="password"
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="none"
-              spellCheck="false"
-              className="networkTextField col-span-4"
-              defaultChecked={hiddenPassword}
-              onChange={() => setHiddenPassword(!hiddenPassword)}
-            />
+              <label htmlFor="hiddenPassword" className="text-gray-500 text-sm font-bold">非表示にする</label>
+              <input type="checkbox"
+                id="hiddenPassword"
+                placeholder="password"
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                spellCheck="false"
+                className="networkTextField col-span-4"
+                defaultChecked={hiddenPassword}
+                onChange={() => setHiddenPassword(!hiddenPassword)}
+              />
             </div>
           </div>
           <div className="grid grid-cols-6 items-center" >
-          <label htmlFor="encryptionType" className="networkFormLabel col-span-2">種類</label>
-          <div className="col-span-4 flex items-center space-x-4">
-            {Object.keys(EncryptionType).map((key) => (
-              <div key={key} className="flex items-center">
-                <input
-                  type="radio"
-                  name="encrypt-select"
-                  id={`encryptionType-${EncryptionType[key]}`}
-                  className="mr-1"
-                  value={EncryptionType[key]}
-                  checked={network.encryption === EncryptionType[key]}
-                  onChange={() => {
-                    setNetwork({ ...network, encryption: EncryptionType[key] });
-                  }}
-                />
-                <label htmlFor={`encryptionType-${EncryptionType[key]}`} className="networkFormLabel">{EncryptionType[key]}</label>
-              </div>
-            ))}
+            <label htmlFor="encryptionType" className="networkFormLabel col-span-2">種類</label>
+            <div className="col-span-4 flex items-center space-x-4">
+              {Object.keys(EncryptionType).map((key) => (
+                <div key={key} className="flex items-center">
+                  <input
+                    type="radio"
+                    name="encrypt-select"
+                    id={`encryptionType-${EncryptionType[key]}`}
+                    className="mr-1"
+                    value={EncryptionType[key]}
+                    checked={network.encryption === EncryptionType[key]}
+                    onChange={() => {
+                      setNetwork({ ...network, encryption: EncryptionType[key] });
+                    }}
+                  />
+                  <label htmlFor={`encryptionType-${EncryptionType[key]}`} className="networkFormLabel">{EncryptionType[key]}</label>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="col-span-4">
-        <QRCode
-          value={qrCodeValue}
-        />
+          <QRCode
+            value={qrCodeValue}
+          />
         </div>
       </div>
     </>
